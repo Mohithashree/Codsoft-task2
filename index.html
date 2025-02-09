@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Melodia Event Management</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      background-color: white;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.927);
+      position: fixed;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav ul li a:hover{
+      color: azure;
+      text-decoration: none;
+    }
+
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    /* Hero Section */
+    .hero {
+  position: relative;
+  height: 450px;
+  overflow: hidden; /* Prevents overflow when scaling */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('image 4.jpg') no-repeat center center/cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.hero:hover::before {
+  transform: scaleX(-1);
+}
+    .hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: left;
+      height: 100%;
+      text-align: left;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    .hero .content h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .hero .content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero .content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .hero .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .hero .social-icons a img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .hero button {
+      padding: 10px 20px;
+      background-color: #6c63ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .hero button:hover {
+      background-color: #e5e4e7;
+      text-decoration: none;
+    }
+    .btn{
+        margin-right: 90%;
+    }
+    
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(224, 220, 220, 0);
+      border-radius: 8px;
+    }
+    
+    .content {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+
+    .content h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    .content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .video {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 100%;
+      max-width: 400px;
+      max-height: 225px;
+      border: none;
+    }
+    .foot{
+      position:relative;
+      height: 400px;
+      background-image: url(bg.jpg);
+      background-size: 100% 200%;
+      background-repeat: no-repeat;
+    }
+    .foot h4{
+      padding-top: 10px;
+      text-align: center;
+      color: white;
+    }
+    .para{
+      padding-left: 200px;
+      padding-right: 200px;
+    }
+    .frame{
+      padding-top: 60px;
+      padding-left: 300px;
+    }
+    .frame a{
+      text-decoration: none;
+      color: white;
+      display:inline;
+      padding: 20px;
+    }
+    .frame a:hover{
+      
+      color: #6761d7;
+    }
+    .phone{
+      padding-top: 50px;
+    }
+    .phone a{
+      padding-left: 550px;
+      text-decoration: none;
+      color: white;
+    }
+    .phone a:hover{
+      text-decoration: underline;
+      color: #5a52e0;
+    }
+    .copy{
+      padding-top: 20px;
+    }
+    .copy h6{
+      padding-left: 550px;
+    }
+    .container{
+      color: black;
+    }
+    .contactform{
+      background-image: url(bg.jpg);
+      background-size: 100% 100%;
+      width: 100%;
+      color: white;
+      margin-left: 15%;
+      margin-right: 15%;
+      margin-top: 20px;
+    }
+    .contactform button{
+        background-color:  #6c63ff;
+        margin: 10px;
+    }
+    .contactform label{
+        margin: 10px;
+    }
+    #pwd,#email{
+        margin: 20px;
+        width: 90%;
+    }
+    .contactform h2{
+        margin: 10px;
+    }
+    div.gallery {
+  position: relative;
+  margin: 20px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 300px;
+  overflow: hidden; /* Ensures the overlay stays within bounds */
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+  color: white;
+  background-color: #000;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+/* Overlay effect */
+.gallery .overlay {
+  position: absolute;
+  top: -100%; /* Initially hidden above */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: top 0.5s ease-in-out;
+}
+
+.gallery:hover .overlay {
+  top: 0; /* Slides down into view */
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="image 3" alt="Melodia Logo">
+      <h1>Melodia Event Management</h1>
+    </div>
+    <nav class="list">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">About Us <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Company Profile</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Client Testimonials</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Services <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Wedding Planning</a></li>
+            <li><a href="#">Corporate Events</a></li>
+            <li><a href="#">Concert Management</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Wedding Venues <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Beach Weddings</a></li>
+            <li><a href="#">Luxury Resorts</a></li>
+            <li><a href="#">Traditional Kerala Halls</a></li>
+          </ul>
+        </li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="contact">
+      <a href="tel:+918590010011">+91-859-001-0011</a>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Take a Trip Into Paradise</h2>
+      <h1>Partner with Melodia Event Management in Kerala</h1>
+      <p>Kerala's #1 Event Management Company</p>
+      <div class="social-icons">
+        <a href="#"><img src="insta.jpg" alt="Instagram"></a>
+        <a href="#"><img src="you" alt="YouTube"></a>
+      </div>
+      <button class="btn">Contact Us</button>
+    </div>
+  </section>
+  <section class="container" id="about">
+    <div class="content">
+        <h1>ISO 9001:2015 CERTIFIED EVENT MANAGEMENT COMPANY IN KERALA</h1>
+        <p><i>
+          Have you ever dreamed of planning the perfect event that will be remembered forever? 
+          Look no further than Melodia® Events, the top-notch event management company in Kerala, India, 
+          that has everything you need to make your occasion an unforgettable experience.</i>
+        </p>
+        <p><i>
+          We make everything from corporate event planning and personal celebrations to even small customized 
+          event packages absolutely memorable! Contact us today to learn more about our services and how we 
+          can help you organize the top event management in Kerala.</i>
+        </p>
+      </div>
+      <div class="video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0PhFbWAAkKM?si=k5s1fFpiQyf-QswZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <section>
+        <div class="gallery">
+            <img src="gallery1" alt="Northern Lights" width="600px" height="400px">
+            <div class="desc">Corporate Event Management</div>
+            <div class="overlay">
+                <div class="text">If you want to make a statement at your next corporate event, partner with Melodia Event Management Company in Kerala.</div>
+            </div>
+        </div>
+        <div class="gallery">
+            <img src="gallery2" alt="Northern Lights" width="600" height="400">
+            <div class="desc">Wedding Planners</div>
+            <div class="overlay">
+                <div class="text">Have you ever dreamed of planning the perfect wedding event to be remembered forever?</div>
+            </div>
+        </div>
+        <div class="gallery">
+            <img src="gallery3" alt="Northern Lights" width="600" height="400">
+            <div class="desc">Destination Weddings</div>
+            <div class="overlay">
+                <div class="text">Celebrate your special day in paradise as you enjoy a luxurious destination wedding with us!</div>
+            </div>
+        </div>
+        <div class="gallery">
+            <img src="gallery4" alt="Northern Lights" width="600" height="400">
+            <div class="desc">Beach Weddings</div>
+            <div class="overlay">
+                <div class="text">Celebrate your love amidst the serene shores and palm-fringed beaches of Kerala</div>
+            </div>
+        </div>
+        <div class="gallery">
+            <img src="gallery5" alt="Northern Lights" width="600" height="400">
+            <div class="desc">Music & Entertainment</div>
+            <div class="overlay">
+                <div class="text">From live bands and DJs to mesmerising performers, we have everything you need</div>
+            </div>
+        </div>
+        <div class="gallery">
+            <img src="gallery6" alt="Northern Lights" width="600" height="400">
+            <div class="desc">Private Parties</div>
+            <div class="overlay">
+                <div class="text">Melodia Event Management in Kerala holds Private Parties and crafts unforgettable moments that leave lasting memories.
+                </div>
+            </div>
+        </div>
+      </section>
+      <div class="contactform">
+        <h2>Contact Form</h2>
+        <form>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="remember"> Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+  </section>
+  <footer>
+    <div class="foot">
+      <h4>Melodia Event Management</h4><br>
+      <h5 class="para">Planning a full event has never been easier! Melodia® Event Management, an ISO 9001:2015 Certified Event Management Company based in Kerala state, India, offers a wide range of services to make your events stress-free and memorable across Kerala. From premium corporate events and destination wedding planning to small-scale birthday parties and private gatherings, you can be sure we have it all covered. With offices in Kochi, Thrissur, Calicut, and Trivandrum, we also specialize in venue selection and hospitality services. We primarily serve Keralites, Malayalees, and those looking to plan destination events in Kerala. We exclusively operate within Kerala. Whether you are planning a destination event or a local celebration in Kerala, India, Melodia® is here to help.</h5>
+      <div class="frame">
+        <a href="home.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#">Services</a>
+        <a href="#">Wedding Values</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact us</a>
+      </div>
+      <div class="phone">
+        <a href="tel:+918590010011">+91-859-001-0011</a>
+      </div>
+      <div class="copy">
+        <h6>&copy; Melodia Event Management</h6>
+      </div>
+      </div>
+      
+  </footer>
+</body>
+</html>
